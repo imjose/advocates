@@ -27,7 +27,7 @@ function SearchBar({ onSearch, onReset, loading }: Props) {
     <div className='inline-flex flex-row gap-1'>
         <Search 
           aria-label="Search advocates"
-          placeholder="input search text" 
+          placeholder="Search advocates" 
           enterButton="Search" 
           size="middle"
           disabled={loading}
