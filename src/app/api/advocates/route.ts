@@ -1,7 +1,7 @@
 import db from '@/db';
 
 import { advocates } from "../../../db/schema";
-import { count, or, ilike, eq } from 'drizzle-orm';
+import { count, or, ilike, eq, sql } from 'drizzle-orm';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -19,6 +19,7 @@ export async function GET(request: Request) {
       ilike(advocates.lastName, `%${query}%`),
       ilike(advocates.city, `%${query}%`),
       ilike(advocates.degree, `%${query}%`),
+      sql`${advocates.specialties}::text ILIKE ${`%${query}%`}`,
     ];
 
     const queryAsNumber = parseInt(query, 10);

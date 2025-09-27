@@ -10,6 +10,11 @@ type FetchState<T> = {
     error: unknown;
 };
 
+/**
+ * Custom hook for fetching advocates with pagination and search functionality
+ * @param options - (optional) PaginationOptions
+ * @returns PaginatedResult<Advocate>
+ */
 export function useAdvocates(options?: PaginationOptions) {
   const [advocates, setAdvocates] = useState<FetchState<PaginatedResult<Advocate>>>({
     data: undefined,

@@ -38,7 +38,6 @@ const tableColumns: TableProps<Advocate>['columns'] = [
         key: 'specialties',
         render: (_, advocate: Advocate) => (
             <span>{advocate.specialties.join(', ')}</span>
-            // <ul className='max-h-10 overflow-scroll'>{advocate.specialties.map((s) => <li key={s}>{s}</li>)}</ul>
         ),
     },
     {
@@ -53,6 +52,11 @@ const tableColumns: TableProps<Advocate>['columns'] = [
     },
 ];
 
+/**
+ * AdvocatesTable component for displaying a table of advocates
+ * @param props - Props containing table data, loading state, pagination options, and page change handler
+ * @returns Table component
+ */
 function AdvocatesTable({ tableData, loading = false, paginationOptions, onPageChange }: Props) {
     const paginationConfig: TableProps<Advocate>['pagination'] = {
         defaultCurrent: paginationOptions.page ?? 1,

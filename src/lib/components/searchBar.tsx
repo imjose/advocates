@@ -10,6 +10,11 @@ type Props = {
     loading: boolean;
 };
 
+/**
+ * SearchBar component for searching advocates
+ * @param Props - Props containing search handlers & reset functionality and loading state
+ * @returns JSX.Element
+ */
 function SearchBar({ onSearch, onReset, loading }: Props) {
   const [searchTerm, setSearchTerm] = React.useState<string>('');
 
