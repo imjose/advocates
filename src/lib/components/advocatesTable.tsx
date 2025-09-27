@@ -2,12 +2,12 @@ import React from 'react'
 import { Table, TableProps } from 'antd';
 
 import { Advocate } from '@/lib/types/advocate';
-import { PaginatedResult, PaginationOptions } from '@/lib/types/pagination';
+import { PaginatedResult, SearchPaginationParams } from '@/lib/types/params';
 
 type Props = {
     loading: boolean;
     tableData: PaginatedResult<Advocate> | undefined;
-    paginationOptions: PaginationOptions;
+    paginationOptions: SearchPaginationParams;
     onPageChange: (page: number, pageSize: number) => void;
 };
 

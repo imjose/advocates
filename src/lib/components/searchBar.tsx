@@ -1,16 +1,23 @@
 import React from 'react'
 
-import { Button, Input } from 'antd';
+import { Button, Input, InputRef } from 'antd';
 
 const { Search } = Input;
 
 type Props = {
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onClick: () => void;
+    onSearch: (value: string) => void;
+    onReset: () => void;
     loading: boolean;
-}
+};
 
-function SearchBar({ onChange, onClick, loading }: Props) {
+function SearchBar({ onSearch, onReset, loading }: Props) {
+  const [searchTerm, setSearchTerm] = React.useState<string>('');
+
+  const resetSearchInput = () => {
+    setSearchTerm('');
+    onReset();
+  };
+  
   return (
     <div className='inline-flex flex-row gap-1'>
         <Search 
@@ -19,18 +26,20 @@ function SearchBar({ onChange, onClick, loading }: Props) {
           enterButton="Search" 
           size="middle"
           disabled={loading}
-          onChange={onChange} 
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onSearch={onSearch}
         />
         <Button 
           aria-label="Reset search"
           variant='solid' 
           color='danger'
           disabled={loading}
-          onClick={onClick}
+          onClick={resetSearchInput}
         > Reset Search
         </Button>
     </div>
   )
 }
 
-export default SearchBar
+export default SearchBar;

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { Advocate } from '../types/advocate';
-import { PaginatedResult, PaginationOptions } from '../types/pagination';
+import { PaginatedResult, PaginationOptions } from '../types/params';
 import { resolveSearchParams } from '../util/params';
 
 type FetchState<T> = {
